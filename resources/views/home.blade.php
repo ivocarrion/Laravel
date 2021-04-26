@@ -8,14 +8,21 @@
         <div class="row">
 
             <div class="col-sm-12 col-md-6">
-                    <h1 class="display-4 text-primary">Desarrollo web</h1>
-                    <p class="lead text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse consectetur facilisis suscipit. Proin maximus turpis at ex blandit tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam erat volutpat.</p>
-                    <a class="btn btn-primary btn-block" href="{{ route('contact') }}">Contáctame</a>
-                    <a class="btn btn-outline-primary btn-block"  href="{{ route('projects.index') }}">Portafolio</a>                 
+                    <h1 class="display-4 text-primary">Gestión Escuelas</h1>
+                    @guest
+
+                    <p class="lead">Accede para gestionar contenidos.</p>
+                        <a class="btn btn-primary" href="{{ route('login') }}" >Entrar</a>
+
+                        {{-- <a href="{{ route('register') }}" class="btn but-info">Registro</a> --}}
+                    @else
+
+                   <a href="#" class="btn btn-danger" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();"
+                        >Cerrar</a>
+                    @endguest
             </div>
-            <div class="col-sm-12 col-md-6">
-                <img class="img-fluid mb-4" src="/svg/home.svg" alt="desarrollo web laravel">
-            </div>
+
         </div>
     </div>
 

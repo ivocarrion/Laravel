@@ -16,15 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::view('/', 'home')->name('home');
-Route::view('/about', 'about')->name('about');
 
-Route::resource('porfolio', 'ProjectController')
-    ->parameters(['porfolio' =>  'project'])
-    ->names('projects');
+// Route::resource('escuelas', 'EscuelaController')->middleware('auth');
 
-Route::view('/contact', 'contact')->name('contact');
-Route::post('contact', 'MessageController@store');
-
+Route::group(['middleware' => 'admin'], function () {
+    Route::resource('escuelas', 'EscuelaController');
+    Route::resource('alumnos', 'AlumnoController');
+});
 
 Auth::routes(['register' => false]);
 
