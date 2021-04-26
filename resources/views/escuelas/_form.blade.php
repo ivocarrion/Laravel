@@ -24,7 +24,7 @@
 </div>
 <div class="form-group">
         <label>Teléfono</label>
-            <input  class="form-control bg-light shadow-sm  border-0" type="number"  name="telefono" value="{{ old('telefono', $escuela->telefono) }}">
+            <input  class="form-control bg-light shadow-sm  border-0" type="text"  name="telefono" value="{{ old('telefono', $escuela->telefono) }}">
 
 </div>
 <div class="form-group">

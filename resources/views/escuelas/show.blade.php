@@ -13,11 +13,11 @@
 
                     <p class="lead text-secondary"> {{ $escuela->direccion }} </p>
                     <p class="text-secondary"> <img style="width:200px;heigth:200px" src="{{ Storage::url($escuela->logotipo) }}" name="{{ $escuela->nombre}}"/> </p>
-                    <p class="text-secondary"> {{ $escuela->email }} </p>
-                    <p class="text-secondary"> {{ $escuela->telefono }}</p>
-                    <p class="text-secondary"> {{ $escuela->web }}</p>
+                    <p class="text-secondary">Email:  {{ $escuela->email }} </p>
+                    <p class="text-secondary">Teléfono:  {{ $escuela->telefono }}</p>
+                    <p class="text-secondary">Página web:  {{ $escuela->web }}</p>
                     <div class="d-flex justify-content-between align-items-vertically">
-                            <a href="{{ route('escuelas.index') }}">Volver</a>
+                            <a href="{{ route('escuelas.index') }}" class="btn btn-light">Volver</a>
 
                             <div class="btn-group">
 

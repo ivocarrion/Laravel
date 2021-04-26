@@ -92,7 +92,7 @@ class EscuelaController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Vista de la escuela para editar.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -105,7 +105,7 @@ class EscuelaController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza el contenido de la escuela
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -113,7 +113,7 @@ class EscuelaController extends Controller
      */
     public function update(Request $request, Escuela $escuela)
     {
-
+        //Si se actualiza el logotipo vuelve a validar mime, dimensiones y tamaño, tambien required de nombre y direccion
         $request->validate([
             'nombre'    => 'required',
             'direccion' => 'required',
@@ -121,7 +121,7 @@ class EscuelaController extends Controller
 
         ]);
 
-
+        //Si se añade una nueva imagen, la almacena en storage y actualiza su url junto al resto de campos
         if($request->hasFile('logotipo')){
 
                  $escuela->logotipo = $request->file('logotipo')->store('public');
@@ -135,11 +135,13 @@ class EscuelaController extends Controller
                 ]);
 
         }
+
+        // Si no se elige nueva imagen, solo se actualizan el resto de campos
         else{
             $escuela->update([
                 'nombre'    => request('nombre'),
                 'direccion' => request('direccion'),
-                'logotipo'  => request('logotipo'),
+                // 'logotipo'  => request('logotipo'),
                 'email'     => request('email'),
                 'telefono'  => request('telefono'),
                 'web'       => request('web')
@@ -152,7 +154,7 @@ class EscuelaController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina la escuela
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

@@ -16,11 +16,41 @@
 
 
          </div>
+         <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Escuela</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Email</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                    @forelse ($escuelas as $escuela)
 
+                        <tr>
+                            <td scope="row">{{ $escuela->nombre }}</td>
+                            <td>{{ $escuela->direccion }}</td>
+                            <td>{{ $escuela->telefono }}</td>
+                            <td>{{ $escuela->web }}</td>
+                            <td> <a class="d-flex justify-content-between" href="{{ route('escuelas.show', $escuela) }}">Ver</a></td>
+                        </tr>
 
+                    @empty
 
+                        <td colspan="4">No hay alumnos</li>
 
-            <ul class="list-group">
+                    @endforelse
+
+                </tbody>
+            </table>
+
+         </div>
+
+         {{ $escuelas->links() }}
+            {{-- <ul class="list-group">
 
 
                 @forelse ($escuelas as $escuela)
@@ -38,8 +68,8 @@
 
                 @endforelse
 
-                {{ $escuelas->links() }}
-        </ul>
+
+        </ul> --}}
 
 
 

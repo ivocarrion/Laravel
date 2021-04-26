@@ -9,26 +9,22 @@ use Illuminate\Http\Request;
 class AlumnoController extends Controller
 {
 
-    //Check de role de usuario para permitir entrar en alumnos
-    // function __construct()
-    // {
-    //     $this->middleware(['auth','is_admin:1']);
-    // }
+
 
     /**
-     * Display a listing of the resource.
+     * Muestra listado de alumnos
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         return view('alumnos.index', [
-            'alumnos' => Alumno::orderBy('nombre', 'asc')->paginate(5)
+            'alumnos' => Alumno::orderBy('nombre', 'asc')->paginate(10),
         ]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Formulario para alta de alumnos
      *
      * @return \Illuminate\Http\Response
      */
@@ -40,7 +36,7 @@ class AlumnoController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guarda los campos de un alumno
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -48,9 +44,9 @@ class AlumnoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre'    => 'required',//validacion re  querido
-            'apellidos' => 'required',//validacion re  querido
-            'fecha_nac'  => 'required'//validacion mime, dimensiones y tamaño max
+            'nombre'    => 'required',//validacion requerido
+            'apellidos' => 'required',//validacion requerido
+            'fecha_nac'  => 'required'//validacion requerido
 
         ]);
 
@@ -67,7 +63,7 @@ class AlumnoController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Detalle info de alumno
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -80,7 +76,7 @@ class AlumnoController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra formulario para actualizar alumno
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -96,7 +92,7 @@ class AlumnoController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza cambios en alumno
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -123,7 +119,7 @@ class AlumnoController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina un alumno de la base de datos
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

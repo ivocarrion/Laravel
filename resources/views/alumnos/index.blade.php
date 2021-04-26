@@ -16,31 +16,38 @@
 
 
          </div>
-            <hr>
-            <p class="lead text-secondary">Listado de alumnos</p>
-            <ul class="list-group">
-
-
+         <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Fecha nacimiento</th>
+                    <th scope="col">Ciudad</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
                     @forelse ($alumnos as $alumno)
 
-                        <li class="list-group-item border-0 mb-3 shadow-sm">
-                            <a class="d-flex justify-content-between" href="{{ route('alumnos.show', $alumno) }}">
-
-                                <span class="text-secondary font-weight-bold">{{ $alumno->nombre }} </span>
-                                <span class="text-secondary ">{{ $alumno->apellidos }} </span>
-                                <span class="text-secondary ">{{ $alumno->fecha_nac }} </span>
-                                <span class="text-secondary ">{{ $alumno->ciudad }} </span>
-                                <span class="text-secondary ">{{ $alumno->escuela->nombre }} </span>
-                            </a>
-                        </li>
+                        <tr>
+                            <td scope="row">{{ $alumno->nombre }}</td>
+                            <td>{{ $alumno->apellidos }}</td>
+                            <td>{{ $alumno->fecha_nac }}</td>
+                            <td>{{ $alumno->ciudad }}</td>
+                            <td> <a class="d-flex justify-content-between" href="{{ route('alumnos.show', $alumno) }}">Ver</a></td>
+                        </tr>
 
                     @empty
 
-                        <li class="list-group-item border-0 mb-3 shadow-sm">No hay alumnos</li>
+                        <td colspan="4">No hay alumnos</li>
 
                     @endforelse
 
-                    {{ $alumnos->links() }}
-            </ul>
+                </tbody>
+            </table>
+        </div>
+                {{ $alumnos->links() }}
+
     </div>
 @endsection

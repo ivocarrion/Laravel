@@ -16,7 +16,7 @@
                     <p class="text-secondary">Ciudad de residencia:  {{ $alumno->ciudad }} </p>
                     <p class="text-secondary">Escuela:  {{ $alumno->escuela->nombre }}</p>
                     <div class="d-flex justify-content-between align-items-vertically">
-                            <a href="{{ route('alumnos.index') }}">Volver</a>
+                            <a href="{{ route('alumnos.index') }}" class="btn btn-light">Volver</a>
 
                             <div class="btn-group">
 
